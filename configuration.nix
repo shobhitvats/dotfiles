@@ -188,8 +188,6 @@
     pkgs.cli-visualizer # Music Visuallizer
     pkgs.etcher
 
-
-
     # - office tools
     libsForQt5.okular # pdf
     libreoffice # office
@@ -203,15 +201,10 @@
     # - audio video
     mpv # light media player
     vlc # general purpose media player
-    # spotify # install using flatpak instead (weird titlebar in nixpkgs)
 
     # - others
     riseup-vpn
     libsForQt5.kdeconnect-kde # wireless connection to other devices
-    # geekbench
-
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    #  wget
   ];
 
   # Hyperland Desktop Env
