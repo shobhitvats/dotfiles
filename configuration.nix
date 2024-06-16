@@ -56,7 +56,7 @@
 
   # Enable the KDE Plasma Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  # services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -72,7 +72,7 @@
 
   # Bluetooth
   hardware.bluetooth.enable = true; # enables support for Bluetooth
-  services.blueman.enable = false;
+  services.blueman.enable = true;
 
   hardware.bluetooth.settings = {
     General = {
@@ -141,6 +141,44 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
 
+    # # For Hyperland
+
+    # Simpler, Cpnfigured with json &css
+    pkgs.waybar
+
+    #  You can make your own crazy bar with Elkowar's widgets
+    # It has it's own markup language
+    pkgs.eww
+
+    # 
+    (pkgs.waybar.overrideAttrs (oldAttrs: {
+      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+      })
+    )
+    #also work on X
+    pkgs.dunst 
+    # pure wayland
+    pkgs.dunst
+    # add this
+    libnotify
+    # all are available in nixpkgs
+    hyprpaper
+    swaybg
+    wpaperd
+    mpvpaper
+     swww  # <-- we'll use this one
+    #  Up-Launcher
+    # most popular
+    rofi-wayland
+    # gtk rofi
+    wofi
+    # hyperland wiki also suggests
+    bemenu
+    fuzzel
+    tofi
+
+# For nix
+
     # # command line essentials
     nixFlakes
     git
@@ -179,6 +217,8 @@
     spotify
 
     # Utility
+    pkgs.discord
+    pkgs.networkmanagerapplet
     pkgs.inkscape-with-extensions
     linux-wifi-hotspot # hotspot
     telegram-desktop
@@ -207,8 +247,20 @@
     libsForQt5.kdeconnect-kde # wireless connection to other devices
   ];
 
+  # Derenv Enable
+  programs.direnv.enable = true;
+
   # Hyperland Desktop Env
-  programs.hyprland.enable = true;
+  programs.hyprland ={
+    enable = true;
+    enableNvidiaPatches = true;
+    xwayland.enable = true;
+  };
+
+  environment.sessionVariables = {
+    # Hint electron apps to use wayland
+    NIXOS_OZONE_WL = "1";
+  };
 
   fonts.packages = with pkgs; [
     open-sans
@@ -247,6 +299,7 @@
 
   # Enabling Flatpack
   xdg.portal.enable = true; # only needed if you are not doing Gnome
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-kde];
   services.flatpak.enable = true;
 
   # # Using bindfs to create FHS font & icon directory
