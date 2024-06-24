@@ -85,7 +85,7 @@
 
     # Tools
     glaxnimate # kdenlive animation support dependency
-    kdePackages.kdenlive # Video Editor
+    # kdePackages.kdenlive # Video Editor
     # davinci-resolve  # Video Editor - not working
     gimp # Photo Editor
     gimpPlugins.gap # gimp animation pakage
