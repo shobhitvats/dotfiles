@@ -5,17 +5,15 @@
 { config, pkgs, inputs, ... }:
 
 {
- 
-
   imports =
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./system-packages.nix
-      ./programms-&-services
-      ./
-      ./
-      ./
+      ./programms-and-services.nix
+      ./sound.nix
+      ./iiser_login.nix
+      ./fonts.nix
       # ./nvidia.nix
     ];
 
@@ -71,6 +69,10 @@
     NIXOS_OZONE_WL = "1";
   };
 
+  # Home-manager
+  home-manager.backupFileExtension = ("backup");
+    
+    
 
 
   # This value determines the NixOS release from which the default

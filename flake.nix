@@ -2,13 +2,20 @@
   description = "A simple NixOS flake";
 
   inputs = {
-    
+
     # NixOS official package source, using the nixos-23.11 branch here
-    nixpkgs = { url = "github:NixOS/nixpkgs/nixos-unstable";};
-    nixpkgs-master = { url = "github:NixOS/nixpkgs/master";};
-    
+    nixpkgs = { url = "github:NixOS/nixpkgs/nixos-unstable"; };
+    nixpkgs-master = { url = "github:NixOS/nixpkgs/master"; };
+
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
 
     vignesh.url = "github:vigneshpai2003/dotfiles";
     vignesh.inputs.nixpkgs.follows = "nixpkgs";
@@ -32,9 +39,9 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.shobhit = import ./home.nix;
-
-          # Optionally, use home-manager.extraSpecialArgs to pass
-          # arguments to home.nix
+          home-manager.extraSpecialArgs = {
+            inherit inputs;
+          };
         }
       ];
     };

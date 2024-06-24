@@ -59,7 +59,6 @@
     xwayland.enable = true;
   };
 
-
   # only needed if you are not doing Gnome
   xdg.portal.enable = true; 
   xdg.portal.extraPortals = [
