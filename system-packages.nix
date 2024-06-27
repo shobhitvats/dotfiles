@@ -101,7 +101,6 @@
     cloudflare-warp
     openvpn #vpn
     discord
-    networkmanagerapplet
     inkscape-with-extensions
     linux-wifi-hotspot # hotspot
     # telegram-desktop

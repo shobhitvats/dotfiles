@@ -3,7 +3,7 @@
 
 
   # Enable networking
-  networking.networkmanager.enable = false;
+  networking.networkmanager.enable = true;
 
 
   # firmware updater
