@@ -14,6 +14,7 @@
       ./sound.nix
       ./iiser_login.nix
       ./fonts.nix
+      ./thermals.nix
       # ./nvidia.nix
     ];
 

@@ -8,8 +8,6 @@
     # Nemo file manager
     cinnamon.nemo
 
-    
-
     # # For Hyperland
 
     # Simpler, Cpnfigured with json &css
@@ -100,6 +98,8 @@
     spotify
 
     # Utility
+    cloudflare-warp
+    openvpn #vpn
     discord
     networkmanagerapplet
     inkscape-with-extensions
@@ -107,6 +107,7 @@
     # telegram-desktop
     kitty
     cli-visualizer # Music Visuallizer
+    
 
     # - office tools
     libsForQt5.okular # pdf
